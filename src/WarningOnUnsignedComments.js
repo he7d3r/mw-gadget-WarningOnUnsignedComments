@@ -14,7 +14,7 @@ function validateComments() {
 			curText = $textBox.val(),
 			signRequired = mw.config.get('wgNamespaceNumber') % 2 === 1
 				|| curText.indexOf(' (UTC)') !== -1,
-			hasSignature = curText.indexOf('~~' + '~~') !== -1,
+			hasSignature = /~{4}(?!<\/nowiki>)/.test( curText ),
 			unsignedText = 'Parece que esqueceu de assinar o seu comentário. Deseja salvar mesmo assim?';
 		if (signRequired && !hasSignature && !confirm(unsignedText)) {
 			$textBox.focus();
