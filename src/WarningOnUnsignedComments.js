@@ -9,22 +9,22 @@
 'use strict';
 
 function validateComments() {
-	$('#wpSave').on('click', function (e) {
-		var $textBox = $('#wpTextbox1'),
+	$( '#wpSave' ).on( 'click', function ( e ) {
+		var $textBox = $( '#wpTextbox1' ),
 			curText = $textBox.val(),
-			signRequired = mw.config.get('wgNamespaceNumber') % 2 === 1
+			signRequired = mw.config.get( 'wgNamespaceNumber' ) % 2 === 1
 				|| curText.indexOf( ' (' + 'UTC)' ) !== -1,
 			hasSignature = /~{4}(?!<\/nowiki>)/.test( curText ),
-			unsignedText = 'Parece que esqueceu de assinar o seu comentário. Deseja salvar mesmo assim?';
-		if (signRequired && !hasSignature && !confirm(unsignedText)) {
+			unsignedText = 'Parece que esqueceu de colocar "~~' + '~~" no final da mensagem para assinar o seu comentário. Deseja salvar mesmo assim?';
+		if ( signRequired && !hasSignature && !confirm( unsignedText ) ) {
 			$textBox.focus();
 			e.preventDefault();
-			console.debug('Não salvar');
+			mw.log( 'Não salvar' );
 		}
-	});
+	} );
 }
-if ($.inArray(mw.config.get('wgAction'), ['edit', 'submit']) !== -1) {
-	$(validateComments);
+if ( $.inArray( mw.config.get( 'wgAction' ), [ 'edit', 'submit' ] ) !== -1 ) {
+	$( validateComments );
 }
 
 }( mediaWiki, jQuery ) );
