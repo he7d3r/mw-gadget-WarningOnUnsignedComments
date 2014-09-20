@@ -2,7 +2,6 @@
  * Warning on unsigned comments
  * @author: Helder (https://github.com/he7d3r)
  * @license: CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0/>
- * @tracking: [[Special:GlobalUsage/User:Helder.wiki/Tools/WarningOnUnsignedComments.js]] ([[File:User:Helder.wiki/Tools/WarningOnUnsignedComments.js]])
  */
 /*jslint browser: true, white: true, devel: true*/
 /*global jQuery, mediaWiki */
